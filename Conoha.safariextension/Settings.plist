@@ -26,11 +26,15 @@
 	</dict>
 	<dict>
 		<key>DefaultValue</key>
-		<string>true</string>
+		<string>1</string>
+		<key>FalseValue</key>
+		<string></string>
 		<key>Key</key>
 		<string>ConohaMode</string>
 		<key>Title</key>
 		<string>ConoHa Mode</string>
+		<key>TrueValue</key>
+		<string>1</string>
 		<key>Type</key>
 		<string>CheckBox</string>
 	</dict>
