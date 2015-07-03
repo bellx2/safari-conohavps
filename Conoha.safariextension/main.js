@@ -25,6 +25,7 @@ function popoverHandler(event){
 function showAuthError() {
     $('#js__loader').hide();
     $('#js__error__auth').show();
+    $('#js__vm-list').empty().hide();
 }
 
 // ローディング画面表示
@@ -111,12 +112,30 @@ function vpsList(data, region){
             'uuid': vm.id,
             'nameTag': vm.metadata.instance_name_tag,
             'vm_state': vm["OS-EXT-STS:vm_state"],
+            'status': GetJpnStatus(vm.status),
             'region': region
         }));
         $('.vps-list__unit[data-uuid="' + vm.id + '"]').show();
         GetConsoleUrl(region, vm.id, "vnc");
         GetConsoleUrl(region, vm.id, "serial");
+        SetServerAction(region, vm.id, "restart");
+        SetServerAction(region, vm.id, "start");
+        SetServerAction(region, vm.id, "stop");
+        SetServerAction(region, vm.id, "halt");
     });    
+}
+
+// ステータスの日本語表示
+function GetJpnStatus(status){
+    switch(status){
+        case "ACTIVE":
+            return "起動中";
+        case "REBOOT":
+            return "再起動中";
+        case "SHUTOFF":
+            return "停止中";
+    }
+    return status;
 }
 
 // コンソールURL取得
@@ -146,5 +165,64 @@ function GetConsoleUrl(region, uuid, type, retry) {
         }
     });
 
+}
+
+function SetServerAction(region, uuid, type){
+    var cmd = "javascript:DoServerAction('" + region + "','" + uuid + "','" + type + "');";
+    $('.vps-list__unit[data-uuid="' + uuid + '"] .js__' + type).attr('href', cmd);
+    
+    if (!safari.extension.settings.VmControl){
+        $('.vps-list__unit[data-uuid="' + uuid + '"] .js__' + type).remove();        
+    }
+}
+
+//サーバーコマンド送信
+function DoServerAction(region, uuid, type, retry){
+
+    var request_cmd = "";
+    var action_jpn = "";
+    switch(type){
+        case 'restart':
+            request_cmd = '{ "reboot": { "type": "SOFT" } }';
+            action_jpn = "再起動をおこないます。";
+            break;
+        case 'start':
+            request_cmd = '{ "os-start": null }';
+            action_jpn = "起動します。";
+            break;
+        case 'stop':
+            request_cmd = '{ "os-stop": null }';
+            action_jpn = "停止処理を開始します。";
+            break;
+        case 'halt':
+            request_cmd = '{ "os-stop": {"force_shutdown": true} }';
+            action_jpn = "強制終了を開始します。";
+            break;
+        default:
+            return;
+    }
+
+    $.ajax({
+        type:"post",
+        url: "https://compute." + region + ".conoha.io/v2/" + token[region].tenant.id + "/servers/" + uuid + "/action",
+        headers: {"Accept": "application/json", "X-Auth-Token": token[region].id},
+        data: request_cmd,
+        contentType : "application/JSON",
+        dataType: "JSON",
+        success: function(data){
+            //
+        },
+        error: function(response){
+            if(response.status == 202){
+                alert(action_jpn);
+            }else if(response.status == 401){
+                GetToken(region, function(){
+                    DoServerAction(region, uuid, type, ++retry);
+                });
+            }else{
+                showAuthError();
+            }
+        }
+    });
 }
 

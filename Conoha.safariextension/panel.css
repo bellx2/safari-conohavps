@@ -84,6 +84,22 @@ ul {
     background-image: url("./image/icon-setting.png");
 }
 
+.vps-list__unit__action__start {
+    background-image: url("./image/icon-start.png");
+}
+
+.vps-list__unit__action__stop {
+    background-image: url("./image/icon-vmstop.png");
+}
+
+.vps-list__unit__action__restart {
+    background-image: url("./image/icon-restart.png");
+}
+
+.vps-list__unit__action__halt {
+    background-image: url("./image/icon-halt.png");
+}
+
 .footer {
     margin: 10px 0;
     text-align: center;

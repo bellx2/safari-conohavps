@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.3</string>
+	<string>1.4</string>
 	<key>CFBundleVersion</key>
-	<string>1.2</string>
+	<string>1.4</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Popovers</key>
@@ -60,7 +60,7 @@
 		</dict>
 	</dict>
 	<key>Update Manifest URL</key>
-	<string>http://www.xdig.net/safari/conoha.plist</string>
+	<string>https://www.xdig.net/safari/conoha.plist</string>
 	<key>Website</key>
 	<string>http://bellx2.hateblo.jp/</string>
 </dict>

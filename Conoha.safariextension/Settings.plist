@@ -38,5 +38,19 @@
 		<key>Type</key>
 		<string>CheckBox</string>
 	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>1</string>
+		<key>FalseValue</key>
+		<string></string>
+		<key>Key</key>
+		<string>VmControl</string>
+		<key>Title</key>
+		<string>VM操作を行う</string>
+		<key>TrueValue</key>
+		<string>1</string>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
 </array>
 </plist>
