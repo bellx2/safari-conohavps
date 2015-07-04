@@ -209,18 +209,14 @@ function DoServerAction(region, uuid, type, retry){
         data: request_cmd,
         contentType : "application/JSON",
         dataType: "JSON",
-        success: function(data){
-            //
-        },
-        error: function(response){
-            if(response.status == 202){
+        statusCode: {
+            202: function(){
                 alert(action_jpn);
-            }else if(response.status == 401){
+            },
+            401: function(){
                 GetToken(region, function(){
                     DoServerAction(region, uuid, type, ++retry);
-                });
-            }else{
-                showAuthError();
+                });                
             }
         }
     });
