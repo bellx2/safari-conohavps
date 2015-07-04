@@ -4,6 +4,8 @@
 
 VPSサービス、ConoHaで利用中のサーバーを一覧表示するプラグインです。VPSの状態表示、コンソール起動、コントロールパネルのVPS設定画面へのリンクが表示されます。
 
+![safari-conoha.png](https://qiita-image-store.s3.amazonaws.com/0/14768/cd9d233b-233d-c864-77f3-81abec4cb7b8.png "safari-conoha.png")
+
 あらかじめConoHaコントロールパネルのAPIメニューからAPIユーザーを作成しておいてください。  
   
 ## Safari機能拡張のビルド方法
