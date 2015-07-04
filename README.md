@@ -1,4 +1,4 @@
-# ConoHa VPS - Safari Addon
+# ConoHa VPS - Safari Extension
 
 [ConoHa by GMO](https://www.conoha.jp/referral/?token=oEt6WY5Paa5Gt4jzSpNXJKF7ymfHG3efV6uRUAW502ZUQMMq2Bc-6L3)  
 
