@@ -21,7 +21,9 @@ Safari機能拡張のビルドの方法
 
 ## 署名済みのインストール
 
-証明済みのSafari Addonは以下の場所からダウンロードできます。
+当方で署名済みのSafari AddonはConoha.safariextzになります。ダウンロードしてクリックするとSafariにインストールされます。
+
+また、以下の場所からもダウンロード可能です。
 https://www.xdig.net/safari/
     
 ## 設定
